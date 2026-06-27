@@ -13,23 +13,6 @@ Instead of only collecting notes, I focus on understanding concepts, implementin
 
 Every folder represents one step toward becoming a better Machine Learning Engineer.
 
-Python
-   ↓
-NumPy
-   ↓
-Pandas
-   ↓
-Data Visualization
-   ↓
-Statistics
-   ↓
-Linear Algebra
-   ↓
-Machine Learning
-   ↓
-Deep Learning
-   ↓
-Projects
 
 
 
