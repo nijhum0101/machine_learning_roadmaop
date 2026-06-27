@@ -1,9 +1,8 @@
 <p align="center">
-  <img src="./machine%20learning.png" alt="Machine Learning Banner" width="100%">
+  <img src="machine%20learning.png" alt="Machine Learning Banner" width="100%">
 </p>
 
 # 🚀 Machine Learning Roadmap
-# machine_learning_roadmaop
 
 Welcome!
 
