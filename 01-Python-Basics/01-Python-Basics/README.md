@@ -10,6 +10,7 @@ This folder contains my Python fundamentals for Machine Learning.
 - [Print Statements](#print-statements)
 - [Type Conversion & Boolean Values](#type-conversion--boolean-values)
 - [Input Statements](#input-statements)
+- [Control Flow](#Control-Flow)
 - [Loops](#loops)
 - [Functions](#functions)
 - [Data Structures](#data-structures)
@@ -384,17 +385,222 @@ bool({"a": 1})   # True
 
 Learn how to take user input using the `input()` function.
 
+The input() function gets user input from the keyboard.
+
+### Basic Input
+```python
+# input() always returns a string
+name = input("What's your name? ")
+print(f"Hello, {name}!")
+```
+
+### Type Conversion with input
+
+Since input() returns a string, convert it for numeric operations:
+
+```python
+# Get age as integer
+age = int(input("Tell your age: "))
+print(f"Next year you'll be {age + 1}")
+
+# Get price as float
+price = float(input("Enter price: "))
+print(f"Price with tax: ${price * 1.1:.2f}")
+
+# Get boolean (yes/no)
+response = input("Do you like Python? (yes/no): ")
+likes_python = response.lower() == "yes"
+print(f"Likes Python: {likes_python}")
+```
+
+### Multiple Inputs
+
+```python
+# Get multiple values
+name = input("Enter name: ")
+age = int(input("Enter age: "))
+city = input("Enter city: ")
+
+print(f"{name} is {age} years old and lives in {city}")
+
+# Get multiple values on one line (comma-separated)
+data = input("Enter name, age, city (comma-separated): ")
+name, age, city = data.split(",")
+age = int(age.strip())
+city = city.strip()
+print(f"{name} is {age} years old and lives in {city}")
+```
+
+### Handling Input errors
+
+```python
+# Safe input with error handling
+while True:
+    try:
+        age = int(input("Enter your age: "))
+        if age > 0:
+            break
+        else:
+            print("Age must be positive!")
+    except ValueError:
+        print("Please enter a valid number!")
+
+print(f"You entered: {age}")
+```
+
 ---
 
-# Loops
+# Control Flow
 
 Explore `for` loops, `while` loops, and loop control statements.
+
+### If/Else Statements
+```python
+age = 18
+
+if age >= 18:
+    print("You are an adult")
+elif age >= 13:
+    print("You are a teenager")
+else:
+    print("You are a child")
+
+# Output: You are an adult
+```
+
+### Comparison Operation
+
+```python
+x = 10
+y = 5
+
+print(x > y)   # True
+print(x < y)   # False
+print(x == y)  # False (equality)
+print(x != y)  # True (not equal)
+print(x >= y)  # True
+print(x <= y)  # False
+```
+
+---
+# Loops
+
+### For Loops
+
+```python
+# Iterate over a list
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+
+# Output:
+# apple
+# banana
+# cherry
+
+# Using range
+for i in range(5):
+    print(i)
+
+# Output: 0, 1, 2, 3, 4
+
+# With index
+for index, fruit in enumerate(fruits):
+    print(f"{index}: {fruit}")
+
+# Output:
+# 0: apple
+# 1: banana
+# 2: cherry
+```
+
+### While Loop
+
+```python
+count = 0
+while count < 5:
+    print(count)
+    count += 1
+
+# Output: 0, 1, 2, 3, 4
+```
+
+### Loop Control
+
+```python
+# Break: exit loop
+for i in range(10):
+    if i == 5:
+        break
+    print(i)
+# Output: 0, 1, 2, 3, 4
+
+# Continue: skip iteration
+for i in range(5):
+    if i == 2:
+        continue
+    print(i)
+# Output: 0, 1, 3, 4
+```
 
 ---
 
 # Functions
 
 Learn how to create reusable functions using `def`.
+
+### Defining Functions
+
+```python
+def greet(name):
+    """This function greets a person"""
+    return f"Hello, {name}!"
+
+message = greet("Alice")
+print(message)  # Output: Hello, Alice!
+```
+
+### Function Parameter
+
+```python
+# Default parameters
+def power(base, exponent=2):
+    return base ** exponent
+
+print(power(3))      # Output: 9 (3^2)
+print(power(3, 3))   # Output: 27 (3^3)
+
+# Keyword arguments
+def introduce(name, age, city):
+    return f"{name} is {age} years old and lives in {city}"
+
+print(introduce(age=25, city="New York", name="Alice"))
+# Output: Alice is 25 years old and lives in New York
+```
+
+
+### Lambda Functions
+
+```python
+# Anonymous functions
+square = lambda x: x ** 2
+print(square(5))  # Output: 25
+
+# Common use: with map, filter
+numbers = [1, 2, 3, 4, 5]
+squared = list(map(lambda x: x**2, numbers))
+print(squared)  # Output: [1, 4, 9, 16, 25]
+
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+print(evens)  # Output: [2, 4]
+
+# reduce: combine iterable into one value (from functools)
+from functools import reduce
+
+product = reduce(lambda acc, x: acc * x, numbers, 1)
+print(product)  # Output: 120 (1*2*3*4*5)
+```
+
 
 ---
 
